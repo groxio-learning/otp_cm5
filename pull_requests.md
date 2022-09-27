@@ -1,2 +1,3 @@
 - Bruce Tate
 - Kevin Lockett
+- Dipti Kurmi
