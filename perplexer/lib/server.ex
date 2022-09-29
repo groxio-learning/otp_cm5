@@ -2,6 +2,26 @@ defmodule Perplexer.Server do
     use GenServer
     alias Perplexer.Countarr
 
+    # Client
+
+    def start_link(input) do
+      GenServer.start_link(__MODULE__, input, name: :counter)
+    end
+
+    def inc(counter_pid \\ :counter) do
+      GenServer.cast(counter_pid, :inc)
+    end
+
+    def dec(counter_pid \\ :counter) do
+      GenServer.cast(counter_pid, :dec)
+    end
+
+    def show(counter_pid \\ :counter) do
+      GenServer.call(counter_pid, :show)
+    end
+
+    # Server (callbacks)
+
     @impl true
     def init(input) do
         {:ok, Countarr.new(input)}

@@ -5,11 +5,14 @@ defmodule Perplexer.Application do
 
   use Application
 
+  alias Perplexer.Server
+
   @impl true
   def start(_type, _args) do
     children = [
       # Starts a worker by calling: Perplexer.Worker.start_link(arg)
-      # {Perplexer.Worker, arg}
+      {Server, "0"}
+
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
