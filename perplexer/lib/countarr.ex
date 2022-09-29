@@ -12,5 +12,10 @@ defmodule Perplexer.Countarr do
     input - value
   end
 
+  @impl true
+  def handle_cast(:inc, counter) do
+    {:noreply, Countarr.inc(counter)}
+  end
+
   def show(result), do: "the countarr is #{result}"
 end
