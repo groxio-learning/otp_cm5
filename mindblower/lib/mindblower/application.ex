@@ -10,11 +10,16 @@ defmodule Mindblower.Application do
     children = [
       # Starts a worker by calling: Mindblower.Worker.start_link(arg)
       # {Mindblower.Worker, arg}
+      {Mindblower.Server, :iron_man},
+      {Mindblower.Server, :superman},
+      {Mindblower.Server, :wonder_woman},
+      {Mindblower.Server, :groot},
+      {Mindblower.Server, :thor}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Mindblower.Supervisor]
+    opts = [strategy: :one_for_all, name: Lifecycle]
     Supervisor.start_link(children, opts)
   end
 end
